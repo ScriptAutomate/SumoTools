@@ -11,12 +11,12 @@ These functions utilize the Sumo Logic API as documented here:
 Version
 =========
 
-0.1 - 09/29/14
+0.1 - 09/30/14
   - WIP release
-    - New-SumoCollectorSource has errors with LocalWindowsEventLog source type
-      - Working with Sumo to decipher error message: "Missing required field: 'eventSources'"
-        - This 'required field' is not documented anywhere
-      - Have not confirmed functionality of other source types
+    - New-SumoCollectorSource works. There was an error in the API. Reminder: JSON
+        is case-sensitive. I was using 'lognames' instead of 'logNames' -- the API
+        returned "Missing required field: 'eventSources'" when it meant 'logNames'
+      - Have not confirmed functionality of other source types outside of WindowsEventLogs
 
 Current Functions
 =========
