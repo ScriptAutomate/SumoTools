@@ -6,7 +6,7 @@ Requires version 3.0 of PowerShell, as data is returned in JSON format and the m
 All commands have been tested on PowerShell 4.0, but should work on v3.0+
 
 These functions utilize the Sumo Logic API as documented here:
-https://github.com/SumoLogic/sumo-api-doc/wiki
+- https://github.com/SumoLogic/sumo-api-doc/wiki
 
 Version
 =========
@@ -22,17 +22,18 @@ Current Functions
 =========
 
 These are the functions currently available:
-Get-SumoCollector
-Get-SumoCollectorSource
-New-SumoCollectorSource
-New-SumoCredential
-Remove-SumoCollector
-Remove-SumoCollectorSource
+- Get-SumoCollector
+- Get-SumoCollectorSource
+- New-SumoCollectorSource
+- New-SumoCredential
+- Remove-SumoCollector
+- Remove-SumoCollectorSource
         
 To Do
 =========
 
-- Include help documentation; preferrable, an XML file that can update via Update-Help
+SumoTools PowerShell Module roadmap:
+- Include help documentation; preferable, an XML file that can update via Update-Help
 - Improved error checking (especially in cases where there is no error-checking!)
 - Future functions
   - Invoke-SumoSearch
