@@ -8,6 +8,9 @@ All commands have been tested on PowerShell 4.0, but should work on v3.0+
 These functions utilize the Sumo Logic API as documented here:
 - https://github.com/SumoLogic/sumo-api-doc/wiki
 
+I will also be periodically blogging about the PowerShell module (among other things) here:
+- http://halfwaytoinfinite.wordpress.com/
+
 Version
 =========
 
