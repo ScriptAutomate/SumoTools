@@ -8,9 +8,19 @@ All commands have been tested on PowerShell 4.0, but should work on v3.0+
 These functions utilize the Sumo Logic API as documented here:
 - https://github.com/SumoLogic/sumo-api-doc/wiki
 
+Will periodically be blogging about it here:
+- http://halfwaytoinfinite.wordpress.com
+
 Version
 =========
 
+NOTE: THIS IS CURRENTLTY A PRE-RELEASE VERSION! IT WILL BE UNTIL v1.0!
+
+0.2 - 10/07/14
+  - Added a 'SumoTools.psd1' manifest
+  - Standardized fashion of accessing API with Invoke-RestMethod across most functions
+  - Added comment-based help for a few functions
+  - Misc modifications
 0.1 - 09/30/14
   - WIP release
     - New-SumoCollectorSource works. There was an error in the API. Reminder: JSON
@@ -33,9 +43,11 @@ To Do
 =========
 
 SumoTools PowerShell Module roadmap:
-- Include help documentation; preferable, an XML file that can update via Update-Help
+- Include comment-based help!!
 - Improved error checking (especially in cases where there is no error-checking!)
 - Future functions
+  - Set-SumoCollectorSource
+  - Set-SumoCollector
   - Invoke-SumoSearch
   - Start-SumoSearchJob
   - Get-SumoSearchJob
