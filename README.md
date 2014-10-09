@@ -16,11 +16,19 @@ Version
 
 NOTE: THIS IS CURRENTLTY A PRE-RELEASE VERSION! IT WILL BE UNTIL v1.0!
 
+0.3 - 10/08/14
+  - Set-SumoCollectorSource is working as expected
+  - New-SumoCollectorSource is working as expected
+  - Added a '-Credential' parameter, for those who wish to use alternate
+    credentials, and/or don't want to use New-SumoCredential
+  - Improved overall code of functions
+
 0.2 - 10/07/14
   - Added a 'SumoTools.psd1' manifest
   - Standardized fashion of accessing API with Invoke-RestMethod across most functions
   - Added comment-based help for a few functions
   - Misc modifications
+  
 0.1 - 09/30/14
   - WIP release
     - New-SumoCollectorSource works. There was an error in the API. Reminder: JSON
