@@ -16,6 +16,9 @@ Version
 
 NOTE: THIS IS CURRENTLTY A PRE-RELEASE VERSION! IT WILL BE UNTIL v1.0!
 
+0.4 - 10/10/14
+  - Set-SumoCollectoSource was NOT working as expected: Fixed
+    - Also expanded for better functionality
 0.3 - 10/08/14
   - Set-SumoCollectorSource is working as expected
   - New-SumoCollectorSource is working as expected
@@ -46,6 +49,7 @@ These are the functions currently available:
 - New-SumoCredential
 - Remove-SumoCollector
 - Remove-SumoCollectorSource
+- Set-SumoCollectorSource
         
 To Do
 =========
@@ -54,7 +58,6 @@ SumoTools PowerShell Module roadmap:
 - Include comment-based help!!
 - Improved error checking (especially in cases where there is no error-checking!)
 - Future functions
-  - Set-SumoCollectorSource
   - Set-SumoCollector
   - Invoke-SumoSearch
   - Start-SumoSearchJob
