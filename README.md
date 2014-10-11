@@ -19,6 +19,7 @@ NOTE: THIS IS CURRENTLTY A PRE-RELEASE VERSION! IT WILL BE UNTIL v1.0!
 0.4 - 10/10/14
   - Set-SumoCollectoSource was NOT working as expected: Fixed
     - Also expanded for better functionality
+
 0.3 - 10/08/14
   - Set-SumoCollectorSource is working as expected
   - New-SumoCollectorSource is working as expected
