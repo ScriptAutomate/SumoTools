@@ -39,11 +39,17 @@ SumoTools PowerShell Module roadmap:
   - Get-SumoDashBoard
   - Get-SumoDashBoardMonitor
   - Get-SumoDashBoardMonitorData
+  - Test-SumoRemoteWinLogSourceConfiguration
+  - Set-SumoRemoteWinLogSourceConfiguration
   
 Version
 =========
 
 NOTE: THIS IS CURRENTLTY A PRE-RELEASE VERSION! IT WILL BE UNTIL v1.0!
+
+0.5 - 10/28/14
+  - Fixes to both Set- and New-SumoCollectorSource for RemoteFile sources
+  - A minimum amount of comment-based help has been added to all functions
 
 0.4 - 10/10/14
   - Set-SumoCollectorSource was NOT working as expected: Fixed
