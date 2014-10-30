@@ -47,6 +47,10 @@ Version
 
 NOTE: THIS IS CURRENTLTY A PRE-RELEASE VERSION! IT WILL BE UNTIL v1.0!
 
+0.6 - 10/30/14
+  - API documentation for Sumo Logic is using a deprecated form of the Remote File source. Upgraded New/Set-SumoCollectorSource to use "RemoteFileV2"
+    - Remote File sources now allow for PathExpression to be used. Wildcards - yay!
+
 0.5 - 10/28/14
   - Fixes to both Set- and New-SumoCollectorSource for RemoteFile sources
   - A minimum amount of comment-based help has been added to all functions
