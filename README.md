@@ -18,6 +18,7 @@ These are the functions currently available:
 - Get-SumoCollector
 - Get-SumoCollectorSource
 - New-SumoCollectorSource
+- New-SumoCollectorSourceFilter
 - New-SumoCredential
 - Remove-SumoCollector
 - Remove-SumoCollectorSource
@@ -46,6 +47,14 @@ Version
 =========
 
 NOTE: THIS IS CURRENTLTY A PRE-RELEASE VERSION! IT WILL BE UNTIL v1.0!
+
+0.7 - 11/17/2014
+  - If functions output objects, they are now of a custom type (SumoTools.*)
+  - Fixed issue with New-SumoCredential being unable to verify credentials against API before encrypting to file
+  - Added new function: New-SumoCollectorSourceFilter
+    - Help documentation included
+    - Both the Set- and New-SumoCollectorSource functions have been modified to accept objects created by this function for their -Filters parameter.
+  - Misc. minor code fixes
 
 0.6 - 10/30/14
   - API documentation for Sumo Logic is using a deprecated form of the Remote File source. Upgraded New/Set-SumoCollectorSource to use "RemoteFileV2"
