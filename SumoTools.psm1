@@ -203,7 +203,7 @@ Param
         break
       }
     }
-    $SumoBaseAPI = "https://api.sumologic.com/api"
+    $SumoBaseAPI = "$global:SumoBaseAPIHost/api"
     if ($Active -and $Inactive) {
       Clear-Variable Active,Inactive
     }
