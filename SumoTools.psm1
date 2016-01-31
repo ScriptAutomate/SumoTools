@@ -6,6 +6,8 @@ NOTE: Please check out GitHub for latest revisions
 Link: https://github.com/ScriptAutomate/SumoTools
 #>
 
+$global:SumoBaseAPIHost = Get-Content "$PSScriptRoot\SumoAPIHost" -ErrorAction SilentlyContinue
+
 function New-SumoCredential {
 <#
 	.SYNOPSIS
@@ -80,7 +82,20 @@ Param
     }
     
     Write-Warning "Verifying credentials..."
-    $SumoBaseAPI = "https://api.sumologic.com/api/v1/collectors"
+    $global:SumoBaseAPIHost = 'https://api.sumologic.com'
+    $SumoBaseAPI = "$global:SumoBaseAPIHost/api/v1/collectors"
+    
+    $initReq = [System.Net.WebRequest]::Create($SumoBaseAPI)
+    $initReq.Credentials = $Credential
+    $initReq.AllowAutoRedirect = $false
+    $initRes = $initReq.GetResponse()
+    if($initRes.StatusCode -eq [System.Net.HttpStatusCode]::MovedPermanently) {
+      $newRegionUri = [System.Uri]$initRes.GetResponseHeader('Location')
+      $global:SumoBaseAPIHost = $newRegionUri.GetLeftPart([System.UriPartial]::Authority)
+      $global:SumoBaseAPIHost | Out-File "$ModuleLocation\SumoAPIHost"
+      $SumoBaseAPI = "$global:SumoBaseAPIHost/api/v1/collectors"
+    }
+  
     $null = Invoke-RestMethod $SumoBaseAPI -Credential $Credential
     
     # If credentials worked, export secure string text
@@ -326,7 +341,7 @@ Param
         break
       }
     }
-    $SumoBaseAPI = "https://api.sumologic.com/api"
+    $SumoBaseAPI = "$global:SumoBaseAPIHost/api"
     
     if ($InputObject) {
       $TypeName = $InputObject | Get-Member | select-object -ExpandProperty TypeName
@@ -485,7 +500,7 @@ Param
         break
       }
     }
-    $SumoBaseAPI = "https://api.sumologic.com/api"
+    $SumoBaseAPI = "$global:SumoBaseAPIHost/api"
   }
   
   Process {
@@ -793,7 +808,7 @@ Param
         break
       }
     }
-    $SumoBaseAPI = "https://api.sumologic.com/api"
+    $SumoBaseAPI = "$global:SumoBaseAPIHost/api"
     
     # Confirming that -Filters input object is legal
     if ($Filters) {
@@ -989,7 +1004,7 @@ Param
         break
       }
     }
-    $SumoBaseAPI = "https://api.sumologic.com/api"
+    $SumoBaseAPI = "$global:SumoBaseAPIHost/api"
   }
   
   Process {
@@ -1004,7 +1019,7 @@ Param
         Write-Verbose "REMOVING Sumo Collector Source $SourceID"
         Write-Verbose "Collector Name: $($SourceProperties.CollectorName)"
         Write-Verbose "Source Name: $($SourceProperties.Name)"
-        $WebPageBase = "https://api.sumologic.com/api/v1/collectors/$CollectorID/sources/$SourceID"
+        $WebPageBase = "$global:SumoBaseAPIHost/api/v1/collectors/$CollectorID/sources/$SourceID"
         $null = Invoke-RestMethod -Uri $WebPageBase -Method Delete -Credential $Credential -ErrorAction Stop
         Write-Warning "REMOVED Sumo Collector Source. Source Name: $($SourceProperties.Name)"
       }
@@ -1075,7 +1090,7 @@ Param
         break
       }
     }
-    $SumoBaseAPI = "https://api.sumologic.com/api"
+    $SumoBaseAPI = "$global:SumoBaseAPIHost/api"
   }
   
   Process {
@@ -1086,7 +1101,7 @@ Param
         if ($PSCmdlet.ShouldProcess($Collector)) {
           Write-Verbose "REMOVING Sumo Collector $Collector."
           Write-Verbose "Name: $CollectorName"
-          $WebPageBase = "https://api.sumologic.com/api/v1/collectors/$Collector"
+          $WebPageBase = "$global:SumoBaseAPIHost/api/v1/collectors/$Collector"
           $null = Invoke-RestMethod -Uri $WebPageBase -Method Delete -Credential $Credential -ErrorAction Stop
           Write-Warning "REMOVED Sumo Collector $Collector. Name: $CollectorName"
         }
@@ -1342,7 +1357,7 @@ Param
         break
       }
     }
-    $SumoBaseAPI = "https://api.sumologic.com/api"
+    $SumoBaseAPI = "$global:SumoBaseAPIHost/api"
     
     # Confirming that -Filters input object is legal
     if ($Filters) {
@@ -1694,7 +1709,7 @@ Param
         break
       }
     }
-    $SumoSearchAPI = "https://api.sumologic.com/api/v1/search/jobs"
+    $SumoSearchAPI = "$global:SumoBaseAPIHost/api/v1/search/jobs"
   }
   
   Process {
@@ -1787,7 +1802,7 @@ param (
         break
       }
     }
-    $SumoSearchAPI = "https://api.sumologic.com/api/v1/search/jobs"
+    $SumoSearchAPI = "$global:SumoBaseAPIHost/api/v1/search/jobs"
     # Confirming that -Filters input object is legal
     if ($SearchJob) {
       $TypeName = $SearchJob | Get-Member | select-object -ExpandProperty TypeName
