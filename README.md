@@ -1,6 +1,12 @@
 SumoTools PowerShell Module
 =========
 
+## [NOTE] !! MODULE IS DEPRECATED !!
+
+This module is no longer managed, and may not be in a working state. It would be better to use and contribute to the following repository in the Sumo Logic org: https://github.com/SumoLogic/sumo-powershell-sdk
+
+## MODULE NOTES
+
 ```powershell
 # Quick install
 iex (New-Object Net.WebClient).DownloadString("https://raw.githubusercontent.com/ScriptAutomate/SumoTools/master/Install-SumoTools.ps1")
